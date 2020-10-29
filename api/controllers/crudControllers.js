@@ -13,3 +13,21 @@ exports.insertOne =(req, res) => {
         });
     });
 };
+
+exports.getAll = async (req,res,next) =>{
+    try {
+        const doc = await Task.find();
+
+        res.status(200).json({
+            status:"succes",
+            doc
+        });
+        next();
+    } catch (error) {
+        res.status(404).json({
+            err:"No document find"
+        });
+    }
+    
+}
+
