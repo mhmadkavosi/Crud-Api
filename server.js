@@ -25,3 +25,5 @@ mongoose.connect(db, {
     useUnifiedTopology: true
 }).then(() => console.log("Database connect successfuly!"));
 
+// ROUTEs
+app.use('/api/v1/crud', crudRoute);
