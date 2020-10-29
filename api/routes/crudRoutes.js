@@ -8,7 +8,7 @@ const router = express.Router();
 router
     .route('/')
     .post(crudController.insertOne)
-    .get(crudController.getAll);
+    .get(crudController.getAll)
 
 
 
