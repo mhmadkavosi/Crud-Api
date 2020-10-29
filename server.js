@@ -17,3 +17,11 @@ const server = app.listen(port, () => {
 app.use(express.json());
 app.use(morgan('dev'));
 
+const db = process.env.DATABASE_LOCAL;
+mongoose.connect(db, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true
+}).then(() => console.log("Database connect successfuly!"));
+
