@@ -41,7 +41,28 @@ exports.getOne = async (req, res, next) => {
             }
         });
     } catch (error) {
-        res.json({
+        res.status(404).json({
+            status: "fail",
+            error
+        });
+    }
+}
+
+exports.updateOne = async (req, res, next) => {
+    try {
+        const doc = await Task.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+
+        res.status(200).json({
+            status: "succes",
+            data: {
+                doc
+            }
+        })
+    } catch (error) {
+        res.status(404).json({
             status: "fail",
             error
         });
