@@ -12,7 +12,8 @@ router
 
 router
     .route('/:id')
-    .get(crudController.getOne);
+    .get(crudController.getOne)
+    .patch(crudController.updateOne)
 
 
 
