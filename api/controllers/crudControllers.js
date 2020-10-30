@@ -25,7 +25,9 @@ exports.getAll = async (req,res,next) =>{
         next();
     } catch (error) {
         res.status(404).json({
-            err:"No document find"
+            status: "fail",
+            message: "some Things Wrong please try again",
+            error
         });
     }
     
@@ -41,8 +43,9 @@ exports.getOne = async (req, res, next) => {
             }
         });
     } catch (error) {
-        res.status(404).json({
+        res.status(500).json({
             status: "fail",
+            message: "some Things Wrong please try again",
             error
         });
     }
@@ -62,8 +65,27 @@ exports.updateOne = async (req, res, next) => {
             }
         })
     } catch (error) {
-        res.status(404).json({
+        res.status(500).json({
             status: "fail",
+            message: "some Things Wrong please try again",
+            error
+        });
+    }
+}
+
+
+exports.deleteOne = async (req, res, next) => {
+    try {
+        const doc = await Task.findByIdAndDelete(req.params.id);
+
+        res.status(204).json({
+            status: "succes",
+            data: null
+        });
+    } catch (error) {
+        res.status(404).json({
+            status: 'fail',
+            message: "some Things Wrong please try again",
             error
         });
     }
