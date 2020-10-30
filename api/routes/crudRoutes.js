@@ -10,6 +10,9 @@ router
     .post(crudController.insertOne)
     .get(crudController.getAll)
 
+router
+    .route('/:id')
+    .get(crudController.getOne);
 
 
 
