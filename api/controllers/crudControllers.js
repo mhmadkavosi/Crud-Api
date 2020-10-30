@@ -31,3 +31,19 @@ exports.getAll = async (req,res,next) =>{
     
 }
 
+exports.getOne = async (req, res, next) => {
+    try {
+        const doc = await Task.findById(req.params.id);
+        res.status(200).json({
+            status: "succes",
+            data: {
+                doc
+            }
+        });
+    } catch (error) {
+        res.json({
+            status: "fail",
+            error
+        });
+    }
+}
